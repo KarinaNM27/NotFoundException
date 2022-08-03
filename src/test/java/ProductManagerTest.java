@@ -4,8 +4,6 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 
-
-
 public class ProductManagerTest {
     ProductManager manager = new ProductManager();
     Book book1 = new Book(1, "July", 25, "Sidorov");
@@ -40,13 +38,13 @@ public class ProductManagerTest {
         manager.add(book3);
         manager.add(smartphone1);
         manager.add(smartphone2);
-        int idToRemove = 1;
-        manager.removeById(idToRemove);
+
+        manager.removeById(1);
 
 
         Product[] actual2 = manager.findAll();
 
-        Product[] expected2 = new Product[]{book2, book3, smartphone1, smartphone2};
+        Product[] expected2 = {book2, book3, smartphone1, smartphone2};
 
         assertArrayEquals(expected2, actual2);
 
@@ -150,11 +148,12 @@ public class ProductManagerTest {
         manager.add(smartphone2);
 
 
-        assertThrows(NotFoundException.class,() -> {
+        assertThrows(NotFoundException.class, () -> {
             manager.removeById(-3);
-                });
 
-        }
+        });
+
+    }
 
 
 }
