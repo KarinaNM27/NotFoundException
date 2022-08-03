@@ -3,6 +3,11 @@ public class ProductManager {
     private Product[] products = new Product[0];
 
     public void add(Product product) {
+        for (Product product1 : findAll())
+            if (product1.id == product.id) {
+                throw new AlreadyExistsException("This id is already exists");
+            }
+
         int length = products.length + 1;
         Product[] tmp = new Product[length];
         System.arraycopy(products, 0, tmp, 0, products.length);

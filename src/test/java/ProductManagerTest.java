@@ -155,6 +155,22 @@ public class ProductManagerTest {
 
     }
 
+    @Test
+    public void shouldAddExistId() {
+        manager.add(book1);
+        manager.add(book2);
+        manager.add(book3);
+        manager.add(smartphone1);
+        manager.add(smartphone2);
+
+
+        assertThrows(AlreadyExistsException.class, () -> {
+            manager.add(book1);
+
+        });
+
+    }
+
 
 }
 
